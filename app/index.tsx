@@ -1,25 +1,29 @@
-import { Text, View} from "react-native";
-import PokedexLayoutWrapper from "@/components/PokedexLayoutWrapper";
-
-const TopBar = () => {
-  return (
-    <View>
-      <Text>Testing TopBar</Text>
-    </View>
-  )
-}
+import { Text, View } from "react-native";
+import * as Font from 'expo-font';
+import { PokedexLayoutWrapper } from "@/components/Layout";
+import { SearchBarHeader } from "@/components/Header";
 
 const Content = () => {
   return (
     <View>
-      <Text>Testing Content</Text>
+      <Text style={{fontFamily: "Poppins-Bold"}}>Content</Text>
     </View>
   )
 }
+
 export default function Index() {
-  return (
-    <PokedexLayoutWrapper Topbar={TopBar}>
-        <Content/>
-    </PokedexLayoutWrapper>
-  );
+
+  const [loadedFonts] = Font.useFonts({
+    'Poppins-Bold': require('../assets/fonts/Poppins-Bold.ttf'),
+    'Poppins-Regular': require('../assets/fonts/Poppins-Regular.ttf'),
+  })
+
+  if (loadedFonts) {
+    return (
+      <PokedexLayoutWrapper Header={SearchBarHeader}>
+          <Content/>
+      </PokedexLayoutWrapper>
+    );
+  }
+
 }
