@@ -2,11 +2,13 @@ import { Text, View } from "react-native";
 import * as Font from 'expo-font';
 import { PokedexLayoutWrapper } from "@/components/Layout";
 import { SearchBarHeader } from "@/components/Header";
+import { PokemonCard } from "@/components/PokemonCard";
 
 const Content = () => {
+  const logoImg = require("../assets/images/adaptive-icon.png")
   return (
     <View>
-      <Text style={{fontFamily: "Poppins-Bold"}}>Content</Text>
+      <PokemonCard name="Charmander"id="#001" image={logoImg}/>
     </View>
   )
 }
