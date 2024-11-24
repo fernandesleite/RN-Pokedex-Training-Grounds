@@ -7,17 +7,17 @@ const styles = StyleSheet.create({
         maxWidth: 104,
         padding: 8,
         alignItems: "center",
-        shadowColor: "#333",
         borderRadius: 8
     },
     cardShadow: {
+        shadowColor: "#333",
         shadowOffset: {
             width: 8,
             height: 8
         },
         shadowOpacity: 0.6,
         shadowRadius: 4,
-        elevation: 1,
+        elevation: 8,
     },
     pokemonId: {
         fontFamily: "Poppins-Regular",
