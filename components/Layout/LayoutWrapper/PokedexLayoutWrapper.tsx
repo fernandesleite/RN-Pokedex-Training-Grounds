@@ -9,15 +9,13 @@ type WrapperProps = {
 
 export function PokedexLayoutWrapper({children, Header}: WrapperProps) {
   return (
-      <SafeAreaView  style={{ flex: 1 }}>
-        <ScrollView contentContainerStyle={styles.container}>
+      <SafeAreaView style={styles.container}>
           <View style={styles.header}>
             <Header/>
           </View>
           <View style={styles.content}>
             {children}
           </View>
-        </ScrollView>
       </SafeAreaView>
   );
 }

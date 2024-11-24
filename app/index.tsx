@@ -2,13 +2,12 @@ import { Text, View } from "react-native";
 import * as Font from 'expo-font';
 import { PokedexLayoutWrapper } from "@/components/Layout";
 import { SearchBarHeader } from "@/components/Header";
-import { PokemonCard } from "@/components/PokemonCard";
+import { PokemonList } from "@/components/PokemonList";
 
 const Content = () => {
-  const logoImg = require("../assets/images/adaptive-icon.png")
   return (
     <View>
-      <PokemonCard name="Charmander"id="#001" image={logoImg}/>
+      <PokemonList/>
     </View>
   )
 }

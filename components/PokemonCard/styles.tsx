@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
         maxWidth: 104,
         padding: 8,
         alignItems: "center",
+        marginHorizontal: 12,
         borderRadius: 8
     },
     cardShadow: {
