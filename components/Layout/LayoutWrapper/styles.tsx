@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native";
+import { Colors } from "@/utils/constants/Colors";
 
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: "#DC0A2D",
+      backgroundColor: Colors.redpokedex,
       padding: 4
     },
     header: {
@@ -16,7 +17,7 @@ const styles = StyleSheet.create({
       flex: 1,
       paddingVertical: 24,
       borderRadius: 20,
-      backgroundColor: "#fff"
+      backgroundColor: Colors.white
     }
   })
 

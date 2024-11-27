@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { Colors } from "@/utils/constants/Colors";
 
 const styles = StyleSheet.create({
     header: {
@@ -13,11 +14,11 @@ const styles = StyleSheet.create({
       lineHeight: 32,
       marginStart: 16,
       top: -3,
-      color: "#FFF",
+      color: Colors.white,
       fontFamily: "Poppins-Bold"
     },
     searchPokemon: {
-      backgroundColor: "#FFF",
+      backgroundColor: Colors.white,
       flex: 1,
       borderRadius: 16,
       paddingStart: 48
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
     filterButton: {
       minHeight: 40,
       minWidth: 40,
-      backgroundColor: "#FFF",
+      backgroundColor: Colors.white,
       borderRadius: "50%"
     },
     filterIcon: {

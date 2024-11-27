@@ -1,41 +1,72 @@
-import { View, FlatList } from "react-native";
+import { View, FlatList, Text, ActivityIndicator } from "react-native";
 import styles from "./style";
 import { PokemonCard } from "../PokemonCard";
+import { getPokemonList } from "@/services/ListService"
+import { useAxiosRequest } from "@/services/useAxiosRequest"
+import { capitalizeString } from "@/utils/StringUtils";
+import { FontFamily, Colors } from "@/utils/constants";
+import { EmptyList, ErrorPokemonList, ItemSeparator } from "./";
+import LoadingIcon from "../LoadingIcon/LoadingIcon";
 
 export function PokemonList() {
   const logoImg = require("../../assets/images/adaptive-icon.png")
-  
-  const pokemonList = [
-    {name: "Charmander_1", id: "001", image: logoImg},
-    {name: "Charmander_2", id: "002", image: logoImg},
-    {name: "Charmander_3", id: "003", image: logoImg},
-    {name: "Charmander_4", id: "004", image: logoImg},
-    {name: "Charmander_5", id: "005", image: logoImg},
-    {name: "Charmander_6", id: "006", image: logoImg},
-    {name: "Charmander_7", id: "007", image: logoImg},
-    
-  ]
 
-  const itemSeparator = () => {
-    return (
-      <View style={styles.itemSeparator}/>
-    )
+  interface PokemonListResponse {
+    count: number,
+    next: string,
+    previous: string,
+    results: PokemonResponse[]
   }
 
-  return(
-    <View style={styles.list}>
-      <FlatList 
-        contentContainerStyle={styles.list}
-        data={pokemonList}
-        numColumns={3}
-        columnWrapperStyle={styles.row}
-        ItemSeparatorComponent={itemSeparator}
-        renderItem={({item}) => {
-          return (
-            <PokemonCard name={item.name} id={item.id} image={item.image}/>
-          )
-        }}
-        />
-    </View>
-  )
+  interface PokemonResponse {
+    name: string,
+    url: string
+  }
+
+  interface PokemonWithId extends PokemonResponse {
+    id: number
+  }
+
+  const {data, error, loading } = useAxiosRequest<PokemonListResponse>({
+    request: getPokemonList
+  });
+
+  const pokemonListWithId = (pokemonList: PokemonResponse[] | undefined): PokemonWithId[] | null => { 
+    if (pokemonList == undefined) {
+      return null;
+    }
+    return pokemonList.map((pokemon) => {
+      pokemon.name.toUpperCase();
+      const parsedId = parseIdFromUrl(pokemon.url);
+      return { ...pokemon, id: parsedId, name: capitalizeString(pokemon.name)};   
+})}
+
+function parseIdFromUrl(url: string): number {
+  return parseInt(url.split("https://pokeapi.co/api/v2/pokemon/").pop() || '0');
+}
+
+  if (loading) {
+      return <LoadingIcon/>
+  } else if (error) {
+      return <ErrorPokemonList/>
+  }else {
+    return(
+      <View style={styles.list}>
+        <FlatList 
+          contentContainerStyle={styles.list}
+          data={pokemonListWithId(data?.results)}
+          numColumns={3}
+          columnWrapperStyle={styles.row}
+          ItemSeparatorComponent={ItemSeparator}
+          ListEmptyComponent={EmptyList}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({item}) => {
+            return (
+              <PokemonCard name={item.name} id={item.id} image={logoImg}/>
+            )
+          }}
+          />
+      </View>
+    )
+  }
 }

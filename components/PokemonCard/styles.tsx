@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native";
+import { Colors } from "@/utils/constants/Colors";
 
 const styles = StyleSheet.create({
     cardContainer: {
         minHeight: "auto",
-        backgroundColor: "#FFF",
+        backgroundColor: Colors.white,
         maxWidth: 104,
         padding: 8,
         alignItems: "center",
@@ -11,7 +12,7 @@ const styles = StyleSheet.create({
         borderRadius: 8
     },
     cardShadow: {
-        shadowColor: "#333",
+        shadowColor: Colors.grayshadow,
         shadowOffset: {
             width: 8,
             height: 8
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
     pokemonId: {
         fontFamily: "Poppins-Regular",
         fontSize: 8,
-        color: "#666666",
+        color: Colors.lightgray,
         alignSelf: "flex-end"
     },
     pokemonImage: {
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
     pokemonName: {
         fontFamily: "Poppins-Regular",
         fontSize: 10,
-        color: "#1D1D1D"
+        color: Colors.gray
     }
 });
 

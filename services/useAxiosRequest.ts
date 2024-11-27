@@ -30,7 +30,5 @@ export const useAxiosRequest = <T>({request}: UseAxiosRequestProps<T>) => {
     };
     }, [])
     
-
-
     return { data, error, loading }
 }
