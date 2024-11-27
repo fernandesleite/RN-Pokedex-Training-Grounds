@@ -9,8 +9,6 @@ import { EmptyList, ErrorPokemonList, ItemSeparator } from "./";
 import LoadingIcon from "../LoadingIcon/LoadingIcon";
 
 export function PokemonList() {
-  const logoImg = require("../../assets/images/adaptive-icon.png")
-
   interface PokemonListResponse {
     count: number,
     next: string,
@@ -45,6 +43,10 @@ function parseIdFromUrl(url: string): number {
   return parseInt(url.split("https://pokeapi.co/api/v2/pokemon/").pop() || '0');
 }
 
+function setSpriteUrl(id: number): string {
+  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
+}
+
   if (loading) {
       return <LoadingIcon/>
   } else if (error) {
@@ -62,7 +64,7 @@ function parseIdFromUrl(url: string): number {
           keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => {
             return (
-              <PokemonCard name={item.name} id={item.id} image={logoImg}/>
+              <PokemonCard name={item.name} id={item.id} image={setSpriteUrl(item.id)}/>
             )
           }}
           />
