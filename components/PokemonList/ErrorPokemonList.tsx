@@ -2,9 +2,9 @@ import { View, Text } from "react-native"
 import styles from "./style"
 
 export const ErrorPokemonList = () => {
-    return (
+  return (
     <View style={styles.genericContainer}>
-        <Text style={styles.errorText}>Error</Text>
+      <Text style={styles.errorText}>Error</Text>
     </View>
-    )
+  )
 }

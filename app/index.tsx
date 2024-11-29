@@ -8,7 +8,7 @@ import { PokemonList } from "@/components/PokemonList";
 const Content = () => {
   return (
     <View>
-      
+
     </View>
   )
 }
@@ -24,8 +24,8 @@ export default function Index() {
 
   if (loadedFonts) {
     return (
-      <PokedexLayoutWrapper Header={SearchBarHeader} headerProps={{searchQuery: query, setSearchQuery: setQuery}}>
-          <PokemonList searchBarQuery={query}/>
+      <PokedexLayoutWrapper Header={SearchBarHeader} headerProps={{ searchQuery: query, setSearchQuery: setQuery }}>
+        <PokemonList searchBarQuery={query} />
       </PokedexLayoutWrapper>
     );
   }

@@ -1,6 +1,6 @@
-import {api} from "./Api";
+import { api } from "./Api";
 
 export function getPokemonList() {
-    const instance = api();
-    return instance.get('pokemon?limit=100000&offset=0');
+  const instance = api();
+  return instance.get('pokemon?limit=100000&offset=0');
 }
