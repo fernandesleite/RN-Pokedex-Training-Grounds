@@ -4,11 +4,14 @@ import { PokemonCard } from "../PokemonCard";
 import { getPokemonList } from "@/services/ListService"
 import { useAxiosRequest } from "@/services/useAxiosRequest"
 import { capitalizeString } from "@/utils/StringUtils";
-import { FontFamily, Colors } from "@/utils/constants";
 import { EmptyList, ErrorPokemonList, ItemSeparator } from "./";
 import LoadingIcon from "../LoadingIcon/LoadingIcon";
 
-export function PokemonList() {
+interface PokemonListProps {
+  searchBarQuery: string; 
+}
+
+export function PokemonList({ searchBarQuery }: PokemonListProps) {
   interface PokemonListResponse {
     count: number,
     next: string,
@@ -47,6 +50,15 @@ function setSpriteUrl(id: number): string {
   return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
 }
 
+function processData() {
+  if(searchBarQuery != null) {
+    const filteredData = data?.results.filter((item) => item.name.includes(searchBarQuery))
+    return pokemonListWithId(filteredData)
+  } else{
+    return pokemonListWithId(data?.results)
+  }
+  
+}
   if (loading) {
       return <LoadingIcon/>
   } else if (error) {
@@ -56,7 +68,7 @@ function setSpriteUrl(id: number): string {
       <View style={styles.list}>
         <FlatList 
           contentContainerStyle={styles.list}
-          data={pokemonListWithId(data?.results)}
+          data={processData()}
           numColumns={3}
           columnWrapperStyle={styles.row}
           ItemSeparatorComponent={ItemSeparator}
