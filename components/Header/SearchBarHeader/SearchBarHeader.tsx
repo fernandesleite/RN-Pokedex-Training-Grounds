@@ -9,10 +9,10 @@ export interface SearchBarHeaderProps {
   setFilterVisibility: (filterVisibility: boolean) => void;
 }
 
-export function SearchBarHeader({ 
-  searchQuery, 
-  setSearchQuery, 
-  filterVisibility, 
+export function SearchBarHeader({
+  searchQuery,
+  setSearchQuery,
+  filterVisibility,
   setFilterVisibility }: SearchBarHeaderProps) {
   return (
     <View style={styles.header}>
@@ -21,16 +21,17 @@ export function SearchBarHeader({
         <Text style={styles.titleText}>Pokédex</Text>
       </View>
       <View style={styles.searchContainer}>
-        <TextInput style={styles.searchPokemon} 
-          placeholder="Search" 
-          onChangeText={text => setSearchQuery(text)} 
+        <TextInput style={styles.searchPokemon}
+          placeholder="Search"
+          onChangeText={text => setSearchQuery(text)}
           value={searchQuery} />
         <SearchIcon style={styles.searchIcon} />
         <View style={styles.filterContainer}>
-          <Pressable 
-            style={styles.filterButton} 
-            onPress={ () => setFilterVisibility(!filterVisibility) } />
-          <FilterIcon style={styles.filterIcon} />
+          <Pressable
+            style={styles.filterButton}
+            onPress={() => setFilterVisibility(!filterVisibility)}>
+            <FilterIcon style={styles.filterIcon} />
+          </Pressable>
         </View>
       </View>
     </View>
