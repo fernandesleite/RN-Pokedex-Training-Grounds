@@ -5,9 +5,15 @@ import styles from "./styles";
 export interface SearchBarHeaderProps {
   searchQuery: string;
   setSearchQuery: (query: string) => void;
+  filterVisibility: boolean;
+  setFilterVisibility: (filterVisibility: boolean) => void;
 }
 
-export function SearchBarHeader({ searchQuery, setSearchQuery }: SearchBarHeaderProps) {
+export function SearchBarHeader({ 
+  searchQuery, 
+  setSearchQuery, 
+  filterVisibility, 
+  setFilterVisibility }: SearchBarHeaderProps) {
   return (
     <View style={styles.header}>
       <View style={styles.title}>
@@ -15,10 +21,15 @@ export function SearchBarHeader({ searchQuery, setSearchQuery }: SearchBarHeader
         <Text style={styles.titleText}>Pokédex</Text>
       </View>
       <View style={styles.searchContainer}>
-        <TextInput style={styles.searchPokemon} placeholder="Search" onChangeText={text => setSearchQuery(text)} value={searchQuery} />
+        <TextInput style={styles.searchPokemon} 
+          placeholder="Search" 
+          onChangeText={text => setSearchQuery(text)} 
+          value={searchQuery} />
         <SearchIcon style={styles.searchIcon} />
         <View style={styles.filterContainer}>
-          <Pressable style={styles.filterButton}></Pressable>
+          <Pressable 
+            style={styles.filterButton} 
+            onPress={ () => setFilterVisibility(!filterVisibility) } />
           <FilterIcon style={styles.filterIcon} />
         </View>
       </View>

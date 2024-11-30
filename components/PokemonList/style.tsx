@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { FontFamily } from "@/utils/constants";
+import { Colors, FontFamily } from "@/utils/constants";
 
 const styles = StyleSheet.create({
   list: {
@@ -20,6 +20,30 @@ const styles = StyleSheet.create({
   genericContainer: {
     alignSelf: "center",
     padding: 20
+  },
+  modal: {
+    width: '50%',
+    alignSelf: "flex-end",
+    top: 120,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    margin: 20,
+  },
+  radiobutton: {
+    fontSize: 16,
+    fontFamily: FontFamily.regular
+  },
+  radioButtonContainer: {
+    alignSelf: "flex-start"
+  },
+  radioGroupContainer: {
+    alignSelf: "center"
   }
 });
 

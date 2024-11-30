@@ -3,18 +3,17 @@ import { Colors } from "@/utils/constants/Colors";
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
       backgroundColor: Colors.redpokedex,
-      padding: 4
+      padding: 4,
+      borderRadius: 20,
     },
     header: {
       paddingStart: 16,
       paddingEnd: 16,
-      paddingBottom: 24,
+      paddingBottom: 16,
       paddingTop: 16,
     },
     content: {
-      flex: 1,
       paddingVertical: 24,
       borderRadius: 20,
       backgroundColor: Colors.white
